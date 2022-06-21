@@ -11,7 +11,7 @@ test('generate grid.', () => {
     expect(finish).toBe("3");
 });
 
-test('add obstacles', () => { 
+test('add obstacles.', () => { 
     let grid = new Grid([10, 10], [0, 0], [9, 9]);
     
     let start = grid.getNode([0,0]).toString();
