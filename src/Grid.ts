@@ -12,7 +12,7 @@ interface IGrid {
     addObstacle(coord: Coordinate): void;
     removeObstacle(coord: Coordinate): void;
     clearObstacles(): void;
-    getNode(coord:Coordinate): Node
+    getNode(coord: Coordinate): Node
     toString(): string;
 }
 
@@ -32,7 +32,7 @@ class Grid implements IGrid {
         for (let y = 0; y < size[1]; y++) {
             let row = [];
             for (let x = 0; x < size[0]; x++) {
-                row.push(new Node)
+                row.push(new Node([x,y]))
             }
             this.arr.push(row)
         }
@@ -45,19 +45,19 @@ class Grid implements IGrid {
         this.calculateGridNeigbours()
     }
 
-    private calculateGridNeigbours(){
-        for(let y = 0; y < this.size[1]; y++){
-            for(let x = 0; x < this.size[0]; x++){
-                let node = this.getNode([x,y]);
+    private calculateGridNeigbours() {
+        for (let y = 0; y < this.size[1]; y++) {
+            for (let x = 0; x < this.size[0]; x++) {
+                let node = this.getNode([x, y]);
 
-                let topLeft = this.getNode([x-1,y-1]);
-                let topMiddle = this.getNode([x,y-1]);
-                let topRight = this.getNode([x+1,y-1]);
-                let left = this.getNode([x-1,y]);
-                let right = this.getNode([x+1,y]);
-                let bottomLeft = this.getNode([x-1,y+1]);
-                let bottomMiddle = this.getNode([x,y+1]);
-                let bottomRight = this.getNode([x+1,y+1]);
+                let topLeft = this.getNode([x - 1, y - 1]);
+                let topMiddle = this.getNode([x, y - 1]);
+                let topRight = this.getNode([x + 1, y - 1]);
+                let left = this.getNode([x - 1, y]);
+                let right = this.getNode([x + 1, y]);
+                let bottomLeft = this.getNode([x - 1, y + 1]);
+                let bottomMiddle = this.getNode([x, y + 1]);
+                let bottomRight = this.getNode([x + 1, y + 1]);
 
                 node.neigbours = {
                     topLeft,
@@ -98,9 +98,9 @@ class Grid implements IGrid {
         // IMPLEMENT
     }
 
-    getNode(coord: Coordinate): Node{
-        let [x,y] = coord;
-        if(x < 0 || y < 0 || x >= this.size[0] || y >= this.size[1]){
+    getNode(coord: Coordinate): Node {
+        let [x, y] = coord;
+        if (x < 0 || y < 0 || x >= this.size[0] || y >= this.size[1]) {
             return undefined;
         }
         return this.arr[x][y];

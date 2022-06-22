@@ -13,7 +13,7 @@ class Grid {
         for (let y = 0; y < size[1]; y++) {
             let row = [];
             for (let x = 0; x < size[0]; x++) {
-                row.push(new Node_1.default);
+                row.push(new Node_1.default([x, y]));
             }
             this.arr.push(row);
         }
