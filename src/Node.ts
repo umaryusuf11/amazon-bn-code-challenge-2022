@@ -106,10 +106,10 @@ class Node implements INode {
 
     toString(): string {
         if (this.isStart) {
-            return "2";
+            return "S";
         }
         if (this.isFinish) {
-            return "3";
+            return "F";
         }
         if (!this.isObstacle) {
             return "0";

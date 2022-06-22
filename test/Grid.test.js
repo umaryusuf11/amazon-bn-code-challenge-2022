@@ -6,9 +6,9 @@ test('generate grid.', () => {
     let finish = grid.getNode([9,9]).toString();
     let randomNode = grid.getNode([4,8]).toString();
 
-    expect(start).toBe("2");
+    expect(start).toBe("S");
     expect(randomNode).toBe("0");
-    expect(finish).toBe("3");
+    expect(finish).toBe("F");
 });
 
 test('add obstacles.', () => { 
@@ -16,8 +16,8 @@ test('add obstacles.', () => {
     
     let start = grid.getNode([0,0]).toString();
     let finish = grid.getNode([9,9]).toString();
-    expect(start).toBe("2");
-    expect(finish).toBe("3");
+    expect(start).toBe("S");
+    expect(finish).toBe("F");
     
     grid.addObstacle([9,7]);
     grid.addObstacle([8,7]);
@@ -41,8 +41,8 @@ test('remove obstacle.', () => {
     
     let start = grid.getNode([0,0]).toString();
     let finish = grid.getNode([9,9]).toString();
-    expect(start).toBe("2");
-    expect(finish).toBe("3");
+    expect(start).toBe("S");
+    expect(finish).toBe("F");
     
     grid.addObstacle([9,7]);
     grid.addObstacle([8,7]);
