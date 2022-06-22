@@ -21,6 +21,9 @@ function toArray(json) {
     }
     return result;
 }
+/** Generates a path from the start to the finish of a grid using the A* Pathfinding Algorithm
+ * @param grid - The grid to solve.
+*/
 class Pathfinder {
     constructor(grid) {
         let start = grid.start;
