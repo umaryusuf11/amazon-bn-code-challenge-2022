@@ -31,10 +31,12 @@ class Grid {
         }
     }
     addObstacle(coord) {
-        // IMPLEMENT
+        let node = this.getNode(coord);
+        node.setIsObstacle(true);
     }
     removeObstacle(coord) {
-        // IMPLEMENT
+        let node = this.getNode(coord);
+        node.setIsObstacle(false);
     }
     clearObstacles() {
         // IMPLEMENT

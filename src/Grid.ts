@@ -53,11 +53,13 @@ class Grid implements IGrid {
     }
 
     addObstacle(coord: Coordinate): void {
-        // IMPLEMENT
+        let node = this.getNode(coord);
+        node.setIsObstacle(true);
     }
 
     removeObstacle(coord: Coordinate): void {
-        // IMPLEMENT
+        let node = this.getNode(coord);
+        node.setIsObstacle(false);
     }
 
     clearObstacles(): void {
