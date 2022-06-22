@@ -1,6 +1,5 @@
-import { resourceLimits } from "worker_threads";
-import Grid, { Coordinate } from "./Grid";
-
+import Grid from "./Grid";
+import Coordinate from "./Coordinate";
 
 function distance(coordA: Coordinate, coordB: Coordinate) {
     // Formula: sqrt((x2 - x1)^2 + (y2 - y1)^2)
@@ -29,6 +28,9 @@ function toArray(json:any){
     return result;
 }
 
+/** Generates a path from the start to the finish of a grid using the A* Pathfinding Algorithm 
+ * @param grid - The grid to solve.
+*/
 class Pathfinder {
     constructor(grid: Grid){
         let start = grid.start;
