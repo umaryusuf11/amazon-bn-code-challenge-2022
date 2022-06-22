@@ -5,10 +5,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const colors_1 = __importDefault(require("colors"));
 class Node {
-    constructor(options) {
+    constructor(position, options) {
         this.isObstacle = false;
         this.isStart = false;
         this.isFinish = false;
+        this.position = position;
         if (options === undefined) {
             return;
         }
@@ -17,7 +18,7 @@ class Node {
         options.isFinish ? this.isFinish = true : this.isFinish = false;
     }
     calculateFCost() {
-        this.fCost = this.gCost + this.hCost;
+        this.fCost = this.getGCost() + this.getHCost();
     }
     setGCost(value) {
         this.gCost = value;
@@ -25,7 +26,7 @@ class Node {
     }
     setHCost(value) {
         this.hCost = value;
-        this.calculateFCost;
+        this.calculateFCost();
     }
     setIsObstacle(value) {
         this.isObstacle = value;
@@ -37,6 +38,9 @@ class Node {
         return this.hCost;
     }
     getFCost() {
+        if (this.isObstacle) {
+            return Number.MAX_VALUE;
+        }
         return this.fCost;
     }
     printNode() {

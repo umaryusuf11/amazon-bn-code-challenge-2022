@@ -1,6 +1,8 @@
 import colors from 'colors'
+import Coordinate from './Coordinate';
 
 interface INode {
+    position: Coordinate;
     isObstacle: boolean;
     isStart: boolean;
     isFinish: boolean;
@@ -29,6 +31,7 @@ interface INode {
 }
 
 class Node implements INode {
+    position: Coordinate;
     private gCost: number;
     private hCost: number;
     private fCost: number;
@@ -47,7 +50,8 @@ class Node implements INode {
         bottomRight: Node;
     };
 
-    constructor(options?: { isObstacle: boolean, isStart: boolean, isFinish: boolean }) {
+    constructor(position: Coordinate, options?: { isObstacle: boolean, isStart: boolean, isFinish: boolean }) {
+        this.position = position;
         if(options === undefined){
             return;
         }
@@ -57,7 +61,7 @@ class Node implements INode {
     }
 
     private calculateFCost() {
-        this.fCost = this.gCost + this.hCost;
+        this.fCost = this.getGCost() + this.getHCost();
     }
     setGCost(value: number): void {
         this.gCost = value;
@@ -65,7 +69,7 @@ class Node implements INode {
     }
     setHCost(value: number): void {
         this.hCost = value;
-        this.calculateFCost;
+        this.calculateFCost();
     }
     setIsObstacle(value: boolean): void {
         this.isObstacle = value;
@@ -78,6 +82,9 @@ class Node implements INode {
         return this.hCost;
     }
     getFCost(): number {
+        if(this.isObstacle){
+            return Number.MAX_VALUE;
+        }
         return this.fCost;
     }
 
