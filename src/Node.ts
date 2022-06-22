@@ -1,7 +1,19 @@
+import colors from 'colors'
+
 interface INode {
     isObstacle: boolean;
     isStart: boolean;
     isFinish: boolean;
+    neigbours: {
+        topLeft: Node;
+        topMiddle: Node;
+        topRight: Node;
+        left: Node;
+        right: Node;
+        bottomLeft: Node;
+        bottomMiddle: Node;
+        bottomRight: Node;
+    }
 
     setGCost(value: number): void;
     setHCost(value: number): void;
@@ -20,9 +32,20 @@ class Node implements INode {
     private gCost: number;
     private hCost: number;
     private fCost: number;
+
     public isObstacle: boolean = false;
     public isStart: boolean = false;
     public isFinish: boolean = false;
+    public neigbours: {
+        topLeft: Node;
+        topMiddle: Node;
+        topRight: Node;
+        left: Node;
+        right: Node;
+        bottomLeft: Node;
+        bottomMiddle: Node;
+        bottomRight: Node;
+    };
 
     constructor(options?: { isObstacle: boolean, isStart: boolean, isFinish: boolean }) {
         if(options === undefined){
@@ -65,20 +88,17 @@ class Node implements INode {
         2 - start
         3 - finish
         */
-        if (this.isStart) {
-            process.stdout.write(this.toString() + " ");
-            return;
-        }
-        if (this.isFinish) {
-            process.stdout.write(this.toString() + " ");
+       let stringToPrint = this.toString() + " "
+        if (this.isStart || this.isFinish) {
+            process.stdout.write(colors.bgBlue.white(stringToPrint));
             return;
         }
         if (!this.isObstacle) {
-            process.stdout.write(this.toString() + " ");
+            process.stdout.write(colors.bgWhite.black(stringToPrint));
             return;
         }
         if (this.isObstacle) {
-            process.stdout.write(this.toString() + " ");
+            process.stdout.write(colors.bgBlack.white(stringToPrint));
             return;
         }
 

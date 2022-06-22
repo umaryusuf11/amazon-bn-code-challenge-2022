@@ -1,5 +1,9 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+const colors_1 = __importDefault(require("colors"));
 class Node {
     constructor(options) {
         this.isObstacle = false;
@@ -42,20 +46,17 @@ class Node {
         2 - start
         3 - finish
         */
-        if (this.isStart) {
-            process.stdout.write(this.toString() + " ");
-            return;
-        }
-        if (this.isFinish) {
-            process.stdout.write(this.toString() + " ");
+        let stringToPrint = this.toString() + " ";
+        if (this.isStart || this.isFinish) {
+            process.stdout.write(colors_1.default.bgBlue.white(stringToPrint));
             return;
         }
         if (!this.isObstacle) {
-            process.stdout.write(this.toString() + " ");
+            process.stdout.write(colors_1.default.bgWhite.black(stringToPrint));
             return;
         }
         if (this.isObstacle) {
-            process.stdout.write(this.toString() + " ");
+            process.stdout.write(colors_1.default.bgBlack.white(stringToPrint));
             return;
         }
     }
