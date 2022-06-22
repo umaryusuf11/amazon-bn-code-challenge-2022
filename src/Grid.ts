@@ -1,18 +1,25 @@
 import Node from './Node'
+import Pathfinder from './Pathfinder'
+import Coordinate from './Coordinate'
 
-type Coordinate = [x: number, y: number];
 interface IGrid {
     size: Coordinate;
     start: Coordinate;
     finish: Coordinate;
     arr: Node[][];
     obstacles: [Node];
-    obstacleLocations: [Coordinate]
-    print(): void;
+    obstacleLocations: [Coordinate];
+
     addObstacle(coord: Coordinate): void;
     removeObstacle(coord: Coordinate): void;
     clearObstacles(): void;
-    getNode(coord: Coordinate): Node
+
+    getNode(coord: Coordinate): Node;
+
+    findPath():Node[];
+    drawPath(path:Node[]):void;
+
+    print(): void;
     toString(): string;
 }
 
@@ -106,6 +113,15 @@ class Grid implements IGrid {
         return this.arr[x][y];
     }
 
+    findPath(): Node[] {
+        // Yet to implement
+        return undefined;
+    }
+
+    drawPath(path: Node[]): void {
+        // Yet to implement
+    }
+
     toString(): string {
         let str = ""
         for (let y = 0; y < this.size[1]; y++) {
@@ -122,5 +138,4 @@ class Grid implements IGrid {
 export default Grid;
 export {
     IGrid,
-    Coordinate,
 }

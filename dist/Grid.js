@@ -74,6 +74,13 @@ class Grid {
         }
         return this.arr[x][y];
     }
+    findPath() {
+        // Yet to implement
+        return undefined;
+    }
+    drawPath(path) {
+        // Yet to implement
+    }
     toString() {
         let str = "";
         for (let y = 0; y < this.size[1]; y++) {

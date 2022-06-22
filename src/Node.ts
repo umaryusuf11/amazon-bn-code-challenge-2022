@@ -1,5 +1,5 @@
 import colors from 'colors'
-import { Coordinate } from './Grid';
+import Coordinate from './Coordinate';
 
 interface INode {
     position: Coordinate;
